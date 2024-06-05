@@ -1,16 +1,15 @@
-version: "3.8"
+version: '3'
+volumes:
+  data:
 services:
-  # MySQL Database (latest version)
-  mysql-db:
-    image: mysql:latest
-    container_name: mysql-db
+  db:
+    image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: doatap
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: mydatabase
       MYSQL_USER: user
-      MYSQL_PASSWORD: userpassword
+      MYSQL_PASSWORD: password
+    volumes:
+      - data:/var/lib/mysql
     ports:
       - "3306:3306"
-      - "33060:33060"
-    volumes:
-      - mysql-db:/var/lib/mysql
